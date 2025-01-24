@@ -2,7 +2,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-^a%^uew3*l1b5yi-cbpeg*3i=#!y)%2)_q)2go^k=9x%*j*kib'
+SECRET_KEY = 'django-insecure-yjrj)qkdj=@2367ct-jfimk!qtrp)jb1+eaqn5+o!4zjhw!pk$'
 
 DEBUG = True
 
@@ -15,6 +15,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'orders.apps.OrdersConfig'
 ]
 
 MIDDLEWARE = [

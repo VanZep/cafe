@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator
 
-from .constants import(
+from src.orders.constants import(
     MIN_NUM_TABLE, MIN_TOTAL_PRICE, CHARFIELD_MAX_LENGTH, STATUSES
 )
 
