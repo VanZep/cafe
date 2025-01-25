@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {% if '/edit/' in request.path %}
+    Редактирование заказа
+  {% elif "/delete/" in request.path %}
+    Удаление заказа
+  {% else %}
+    Добавление заказа
+  {% endif %}
+{% endblock %}

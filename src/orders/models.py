@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator
 
-from src.orders.constants import(
+from .constants import (
     MIN_NUM_TABLE, MIN_TOTAL_PRICE, CHARFIELD_MAX_LENGTH, STATUSES
 )
 
@@ -13,7 +13,7 @@ class Item(models.Model):
         max_length=CHARFIELD_MAX_LENGTH,
         verbose_name='Название блюда'
     )
-    price = models.IntegerField(
+    price = models.PositiveSmallIntegerField(
         verbose_name='Стоимость блюда'
     )
 
@@ -28,22 +28,22 @@ class Item(models.Model):
 class Order(models.Model):
     """Модель заказов."""
 
-    table_number = models.IntegerField(
+    table_number = models.PositiveSmallIntegerField(
         verbose_name='Номер столика',
         validators=(
             MinValueValidator(
                 MIN_NUM_TABLE,
-                message='Номер стола не может быть отрицательным'
+                message='Номер столика не может быть отрицательным'
             ),
         )
     )
     items = models.ForeignKey(
         Item,
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         related_name='orders',
         verbose_name='Блюдо'
     )
-    total_price = models.IntegerField(
+    total_price = models.PositiveIntegerField(
         verbose_name='Общая стоимость заказа',
         validators=(
             MinValueValidator(
@@ -52,7 +52,8 @@ class Order(models.Model):
             ),
         )
     )
-    status = models.IntegerChoices(
+    status = models.CharField(
+        max_length=CHARFIELD_MAX_LENGTH,
         choices=STATUSES,
         verbose_name='Статус заказа'
     )
