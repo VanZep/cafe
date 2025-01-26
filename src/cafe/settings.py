@@ -16,7 +16,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'orders.apps.OrdersConfig',
-
+    'django_bootstrap5'
 ]
 
 MIDDLEWARE = [

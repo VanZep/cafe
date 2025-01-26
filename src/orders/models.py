@@ -33,7 +33,7 @@ class Order(models.Model):
         validators=(
             MinValueValidator(
                 MIN_NUM_TABLE,
-                message='Номер столика не может быть отрицательным'
+                message=f'Номер столика не может быть меньше, чем {MIN_NUM_TABLE}'
             ),
         )
     )
@@ -45,6 +45,8 @@ class Order(models.Model):
     )
     total_price = models.PositiveIntegerField(
         verbose_name='Общая стоимость заказа',
+        null=True,
+        blank=True,
         validators=(
             MinValueValidator(
                 MIN_TOTAL_PRICE,
